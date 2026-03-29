@@ -5,23 +5,19 @@ resource "aws_s3_object" "armageddon_repo_link" {
   content_type = "text/markdown"
 }
 
-# resource "aws_s3_object" "pipeline-succes" {
-#   bucket       = aws_s3_bucket.class7-gcheck.bucket
-#   key          = "pipeline_success.png"
-#   source       = "./proof/pipeline_success.png"
-#   content_type = "image/png"
+resource "aws_s3_object" "gcheck-pipeline-complete" {
+  bucket       = aws_s3_bucket.gcheck-bucket.id
+  key          = "gcheck-pipeline-complete.png"
+  source       = "./objects/gcheck-pipeline-complete.png"
+  content_type = "image/png"
+}
 
-#   etag = filemd5("./proof/pipeline_success.png")
-# }
-
-# resource "aws_s3_object" "webhook" {
-#   bucket       = aws_s3_bucket.class7-gcheck.bucket
-#   key          = "webhook.png"
-#   source       = "./proof/webhook.png"
-#   content_type = "image/png"
-
-#   etag = filemd5("./proof/webhook.png")
-# }
+resource "aws_s3_object" "gcheck-webhook-complete" {
+  bucket       = aws_s3_bucket.gcheck-bucket.id
+  key          = "gcheck-webhook-complete.png"
+  source       = "./objects/gcheck-webhook-complete.png"
+  content_type = "image/png"
+}
 
 # resource "aws_s3_object" "s3_bucket_images" {
 #   bucket       = aws_s3_bucket.class7-gcheck.bucket
