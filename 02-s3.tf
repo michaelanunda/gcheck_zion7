@@ -3,6 +3,8 @@ resource "aws_s3_object" "armageddon_repo_link" {
   key          = "armageddon_repo_link.md"
   source       = "./objects/armageddon_repo_link.md"
   content_type = "text/markdown"
+
+  depends_on = [ aws_s3_bucket.gcheck-bucket ]
 }
 
 resource "aws_s3_object" "gcheck-pipeline-complete" {
@@ -10,6 +12,8 @@ resource "aws_s3_object" "gcheck-pipeline-complete" {
   key          = "gcheck-pipeline-complete.png"
   source       = "./objects/gcheck-pipeline-complete.png"
   content_type = "image/png"
+
+  depends_on = [ aws_s3_bucket.gcheck-bucket ]
 }
 
 resource "aws_s3_object" "gcheck-webhook-complete" {
@@ -17,6 +21,8 @@ resource "aws_s3_object" "gcheck-webhook-complete" {
   key          = "gcheck-webhook-complete.png"
   source       = "./objects/gcheck-webhook-complete.png"
   content_type = "image/png"
+
+  depends_on = [ aws_s3_bucket.gcheck-bucket ]
 }
 resource "aws_s3_bucket_public_access_block" "gcheck-public-access" {
   bucket = aws_s3_bucket.gcheck-bucket.id
@@ -26,6 +32,8 @@ resource "aws_s3_bucket_public_access_block" "gcheck-public-access" {
 
   block_public_policy     = false
   restrict_public_buckets = false
+
+  depends_on = [ aws_s3_bucket.gcheck-bucket ]
 }
 
 resource "aws_s3_bucket_policy" "gcheck-object-policy" {
