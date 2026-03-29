@@ -18,16 +18,6 @@ resource "aws_s3_object" "gcheck-webhook-complete" {
   source       = "./objects/gcheck-webhook-complete.png"
   content_type = "image/png"
 }
-
-# resource "aws_s3_object" "s3_bucket_images" {
-#   bucket       = aws_s3_bucket.class7-gcheck.bucket
-#   key          = "s3_bucket_images.png"
-#   source       = "./proof/s3_bucket_images.png"
-#   content_type = "image/png"
-
-#   etag = filemd5("./proof/s3_bucket_images.png")
-# }
-
 resource "aws_s3_bucket_public_access_block" "gcheck-public-access" {
   bucket = aws_s3_bucket.gcheck-bucket.id
 
