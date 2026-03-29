@@ -56,4 +56,5 @@ resource "aws_s3_bucket_policy" "gcheck-object-policy" {
       }
     ]
   })
+  depends_on = [ aws_s3_bucket_public_access_block.gcheck-public-access ]
 }
